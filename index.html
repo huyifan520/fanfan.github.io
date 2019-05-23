@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人简历</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            text-decoration-line: none;
+            color: #304a65;
+        }
+        /* a:hover{
+            .wrap 
+
+        } */
+
+        .container {
+            background-image: url(./img/7.jpg);
+            width: 100%;
+            height: 950px;
+            overflow: hidden;
+            position: relative;
+        }
+
+
+        .container .first{
+            width: 700px;
+            height: 150px;
+           
+            border-radius: 10px;
+    
+            position: absolute;
+            top: 30%;
+            left: 30%;
+           
+
+          
+        }
+
+        .container .first .wel {
+            font-size: 40px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 150px;
+            opacity: 0;
+            transition:all 1.2s ease;
+            
+
+
+           
+        }
+
+        .container .first .wel:hover{
+            opacity:1;
+            transform: rotate(360deg) scale(3);
+        }
+
+        .wrap {
+            width: 1280px;
+            height: 780px;
+            background-color: #2b3033;
+            margin: 100px auto;
+            opacity: 0.8;
+            display: flex;
+            flex-direction: row;
+            /* display: none; */
+        }
+
+        .left {
+            width: 476px;
+            height: 780px;
+            background-color: aqua;
+            margin-right: 20px;
+        }
+
+        .left .content {
+            padding: 30px 0 40px 30px;
+        }
+
+        .left .content .header {
+            width: 446px;
+            height: 100px;
+            background-color: green;
+            position: relative;
+
+
+        }
+
+        .left .content .header .photo {
+            width: 90px;
+            height: 90px;
+
+        }
+
+        .left .content .header .photo img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .left .content .header .info {
+            width: 320px;
+            height: 70px;
+            background-color: red;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+
+
+        .left .content .header .info .info-name {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 45px;
+        }
+
+        .left .content .header .info .info-explain {
+            font-size: 15px;
+
+        }
+
+        .left .content .introduce {
+
+            width: 446px;
+            height: 252px;
+            background-color: rgb(4, 148, 192);
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .left .content .introduce .person {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top: 15px;
+            left: 10px;
+        }
+
+        .left .content .introduce p {
+            text-indent: 2em;
+            font-size: 16px;
+            line-height: 25px;
+            padding: 20px;
+        }
+
+        .left .content .skill {
+            width: 446px;
+            height: 320px;
+            background-color: rgb(200, 122, 20);
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .left .content .skill .more-pic {
+            width: 400px;
+            height: 200px;
+            position: absolute;
+            top: 30px;
+            left: 70px;
+        }
+
+        .left .content .skill .more-pic .tubiao {
+
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            margin-right: 30px;
+            margin-bottom: 30px;
+
+            transition: All 0.4s ease-in-out;
+        }
+
+        .left .content .skill .more-pic .tubiao:hover {
+            transform: rotate(360deg) scale(1.2);
+
+        }
+
+
+
+        .left .content .skill .image {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 15px;
+            left: 0;
+
+        }
+
+
+
+
+        .middle {
+            width: 408px;
+            height: 780px;
+            background-color: bisque;
+            margin-right: 20px;
+        }
+
+        .middle .mid-info {
+            padding: 30px 0;
+        }
+
+        .middle .work {
+            width: 408px;
+            height: 320px;
+            background-color: aqua;
+            margin-bottom: 20px;
+            position: relative;
+
+        }
+
+        .middle .work .title {
+            width: 140px;
+            height: 50px;
+            background-color: #eeeeee;
+        }
+
+        .middle .work .title img {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top: 15px;
+            left: 10px;
+
+        }
+
+        .middle .work .title span {
+            position: absolute;
+            top: 20px;
+            left: 45px;
+
+        }
+
+        .middle .work .conInfo {
+            width: 408px;
+            height: 270px;
+
+        }
+
+        .middle .work .conInfo .time {
+            width: 10px;
+            height: 270px;
+            position: relative;
+
+        }
+
+        .middle .work .conInfo .time .wire {
+            width: 2px;
+            height: 255px;
+            background-color: #304a65;
+            position: absolute;
+            left: 23px;
+            bottom: 8px;
+        }
+
+        .middle .work .conInfo .time .circle img {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #304a65;
+        }
+
+        .picA {
+            position: absolute;
+            left: 19px;
+            bottom: 235px;
+        }
+
+        .picB {
+            position: absolute;
+            left: 19px;
+            bottom: 150px;
+        }
+
+        .picC {
+            position: absolute;
+            left: 19px;
+            bottom: 74px;
+        }
+
+        .ppA {
+            position: absolute;
+            left: 40px;
+            bottom: 230px;
+        }
+
+        .ppB {
+            position: absolute;
+            left: 40px;
+            bottom: 144px;
+        }
+
+        .ppC {
+            position: absolute;
+            left: 40px;
+            bottom: 68px;
+        }
+
+        .middle .study {
+            width: 408px;
+            height: 370px;
+            background-color: yellowgreen;
+            position: relative;
+
+        }
+
+        .middle .study img {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top: 15px;
+            left: 10px;
+
+        }
+
+        .middle .study .bg {
+
+            position: absolute;
+            top: 20px;
+            left: 45px;
+
+        }
+
+        .right {
+            width: 330px;
+            height: 780px;
+            background-color: blueviolet;
+        }
+
+        .right .top {
+            width: 330px;
+            height: 320px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+            background-color: antiquewhite;
+            position: relative;
+        }
+
+        .right .top .logoA {
+            width: 135px;
+            height: 135px;
+            position: absolute;
+            top: 25px;
+            left: 100px;
+        }
+
+        .right .top .logoB {
+            width: 280px;
+            position: absolute;
+            top: 157px;
+            left: 25px;
+        }
+
+        .right .bottom {
+            width: 330px;
+            height: 370px;
+            background-color: aqua;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .right .bottom img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .right .bottom .a {
+            width: 65px;
+            height: 65px;
+            padding-top: 30px;
+            padding-left: 30px;
+        }
+
+        .right .bottom span {
+            position: absolute;
+            left: 105px;
+            top: 55px;
+            font-size: 20px;
+        }
+
+        .right .bottom .zupic img {
+            width: 40px;
+            height: 40px;
+            display: block;
+            margin: 20px 0 10px 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="first">
+            <a href="we">
+                    <p class="wel">Welcome My webpage</p>
+            </a>
+           
+        </div>
+
+
+
+
+
+
+        <div class="wrap">
+            <div class="left">
+                <div class="content">
+                    <div class="header">
+                        <div class="photo">
+                            <img src="./img/头像.png" alt="">
+                        </div>
+                        <div class="info">
+                            <p class="info-name">帆哥</p>
+                            <p class="info-explain">前端开发工程狮</p>
+                        </div>
+                    </div>
+                    <div class="introduce">
+                        <img class="person" src="./img/person.png" alt="">
+                        <p>您好，我叫帆哥，坐标苏州。 我并不是计算机专业,但对前端很感兴趣，所以自学前端，今后的职业规划是朝着全栈发展，目前在学html、Css、JS、
+                            在实习的五个月来,本人在公司主要负责整个页面的前端开发，配合后台人员实现产品前端界面效果与功能。写过响应式页面，移动端页面，pc端页面。小的来说，商城，企业网站，视频，音频，评论，地图等都有涉及。
+                            不浮躁，喜欢前端，执行力，学习能力都棒棒哒！</p>
+                    </div>
+                    <div class="skill">
+                        <img class="image" src="./img/技能.png" alt="">
+                        <div class="more-pic">
+                            <img class="tubiao" src="./img/c++.png" alt="">
+                            <img class="tubiao" src="./img/c++.png" alt="">
+                            <img class="tubiao" src="./img/c++.png" alt="">
+                            <img class="tubiao" src="./img/c++.png" alt="">
+                            <img class="tubiao" src="./img/c++.png" alt="">
+                            <img class="tubiao" src="./img/c++.png" alt="">
+                            <img class="tubiao" src="./img/c++.png" alt="">
+                            <img class="tubiao" src="./img/c++.png" alt="">
+                            <img class="tubiao" src="./img/c++.png" alt="">
+                            <img class="tubiao" src="./img/c++.png" alt="">
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="middle">
+                <div class="mid-info">
+                    <div class="work">
+                        <div class="title">
+                            <img src="./img/job.png" alt="">
+                            <span>工作经历</span>
+                        </div>
+                        <div class="conInfo">
+                            <div class="time">
+                                <div class="wire"></div>
+                                <div class="circle">
+                                    <img class="picA" src="" alt="">
+                                    <img class="picB" src="" alt="">
+                                    <img class="picC" src="" alt="">
+
+                                </div>
+
+                            </div>
+
+                            <div class="timeCon">
+                                <div class="conLeft">
+                                    <p class="ppA">06.12-08.25</p>
+                                    <p class="ppB">06.12-08.25</p>
+                                    <p class="ppC">06.12-08.25</p>
+
+                                </div>
+                                <div class="conRight">
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="study">
+                        <img src="./img/学士帽子.png" alt="">
+                        <p class="bg">教育背景</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="right">
+                <div class="top">
+                    <img class="logoA" src="./img/logo.png" alt="">
+                    <img class="logoB" src="./img/logo2.png" alt="">
+                </div>
+                <div class="bottom">
+                    <img class="a" src="./img/联系-A.png" alt="">
+                    <span>联系方式 ———</span>
+                    <div class="zupic">
+                        <img class="b" src="./img/phone.png" alt="">
+                        <img class="c" src="./img/qq.png" alt="">
+                        <img class="d" src="./img/微信.png" alt="">
+                        <img class="e" src="./img/邮箱.png" alt="">
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+<script>
+
+
+</script>
+
+</html>
