@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .item-left {
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
+
+        .item-left img {
+            width: 48px;
+            height: 48px;
+            border-radius: 4px;
+        }
+
+        .item-right {
+            flex-grow: 1;
+        }
+
+        .user-name {
+            font-size: 18px;
+            color: #4876FF;
+        }
+
+        .item-title {
+            font-size: 16px;
+            color: #333;
+            margin-top: 5px;
+        }
+
+        .item-img-wrap {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background: #eeeeee;
+            height: 300px;
+        }
+
+        .item-img-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .item-time {
+            font-size: 13px;
+            color: #999999;
+            margin-top: 10px;
+        }
+
+        .comments-wrap {
+            margin-top: 10px;
+            background: #f6f6f6;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 14px;
+            color: #666666;
+            position: relative;
+        }
+
+        .comments-name {
+            font-size: 15px;
+            color: #4876FF;
+        }
+
+        .arrow {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid #f6f6f6;
+            border-left: 10px solid #ffffff;
+            border-right: 10px solid #ffffff;
+            top: -9px;
+        }
+
+        .overlay{
+            position: fixed;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+            background: rgba(0,0,0,.6);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay>div{
+            width: 500px;
+            height: 80%;
+            overflow: auto;
+        }
+
+        .overlay>div>img{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+
+    </div>
+
+    <div class="overlay" onclick="hideOverlay()">
+        <div>
+            <img id="show-img" src="" alt="">
+        </div>
+        
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $(".overlay").hide();
+        getData();
+
+    });
+
+    function getData() {
+        let url = "https://api.apiopen.top/getJoke";
+
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {
+                page: 1,
+                count: 10,
+                type: 'image'
+            },
+            success: function (result) {
+                console.log(result);
+                if (result.code == 200) {
+                    fillList(result.result)
+                } else {
+                    alert(result.message);
+                }
+
+            }
+        });
+    }
+
+    function fillList(list) {
+        for (let i = 0; i < list.length; i++) {
+            let html = '<div class="item">';
+            html += '<div class="item-left">';
+            html += '<img src="'+list[i].header+'" alt="">';
+            html += '</div>';
+            html += '<div class="item-right">';
+            html += '<div class="user-name">'+list[i].name+'</div>';
+            html += '<div class="item-title">'+list[i].text+'</div>';
+            html += '<div class="item-img-wrap" onclick="showImg(\''+list[i].images+'\')">';
+            html += '<img src="'+list[i].images+'" alt="">';
+            html += '</div>';
+            html += '<div class="item-time">'+list[i].passtime+'</div>';
+            if(list[i].top_comments_name){
+                html += '<div class="comments-wrap">';
+                html += '<p class="arrow"></p>';
+                html += '<span class="comments-name">'+list[i].top_comments_name+'：</span>';
+                html += '<span>'+list[i].top_comments_content+'</span>';
+                html += '</div>';
+            }
+            html += '</div>';
+            html += '</div>';
+
+            $("#container").append(html);
+        }
+    }
+
+    function hideOverlay(){
+        $(".overlay").hide();
+        $("html").css("height","auto");
+        $("body").css("height","auto");
+        $("body").css("overflow","auto");
+    }
+
+    function showImg(imgUrl){
+        console.log(imgUrl);
+        $("#show-img").attr("src", imgUrl);
+        $(".overlay").show();
+        $("html").css("height","100%");
+        $("body").css("height","100%");
+        $("body").css("overflow","hidden");
+    }
+</script>
+
+</html>
